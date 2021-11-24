@@ -7,26 +7,35 @@ public class SLList {
             next = n;
         }
     }
-
-    private IntNode first;
-
+    /** The first item(if it exits) it at sentinel.next. */
+    private IntNode sentinel;
+    private int size;
+    /** Creates an empty SLList*/
+    public SLList(){
+        sentinel=new IntNode(6,null);
+        size=0;
+    }
     public SLList(int x) {
-        first = new IntNode(x, null);
+        sentinel = new IntNode(6, null);
+        sentinel.next=new IntNode(x,null);
+        size =1;
     }
 
     /** Adds an item to the front of the list. */
     public void addFirst(int x) {
-        first = new IntNode(x, first);
+        sentinel.next = new IntNode(x, sentinel.next);
+        size=size+1;
     }
 
     /** Retrieves the front item from the list. */
     public int getFirst() {
-        return first.item;
+        return sentinel.next.item;
     }
 
     /** Adds an item to the end of the list. */
     public void addLast(int x) {
-        IntNode p = first;
+        size=size+1;
+        IntNode p = sentinel;
 
         /* Advance p to the end of the list. */
         /** The idea is fairly straightforward,
@@ -46,6 +55,13 @@ public class SLList {
         return 1+size(p.next);
     }
     public int size() {
-        return size(first);
+        return size;
+    }
+
+    public static void main(String[] args) {
+        SLList L=new SLList();
+        L.addFirst(20);
+        L.addLast(2);
+        System.out.println(L.size);
     }
 }
