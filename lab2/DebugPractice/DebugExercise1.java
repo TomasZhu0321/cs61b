@@ -5,7 +5,7 @@
 public class DebugExercise1 {
     public static double divideThenRound(double top, double bottom) {
         double quotient = top / bottom;
-        double result = Math.round(quotient);
+        double result = Math.floor(quotient);
         return result;
     }
 
@@ -24,5 +24,7 @@ public class DebugExercise1 {
         double b3 = 4;
         double result3 = divideThenRound(t3, b3);
         System.out.println("round(" + t3 + "/" + b3 + ")=" + result3);
+
+
     }
 }
