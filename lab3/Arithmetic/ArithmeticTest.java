@@ -1,4 +1,6 @@
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class ArithmeticTest {
@@ -27,6 +29,18 @@ public class ArithmeticTest {
         assertEquals(-6, Arithmetic.sum(0, -6));
         assertEquals(0, Arithmetic.sum(6, -6));
     }
+    @Test
+    public void testreverse(){
+        IntList or=IntList.of(1,2,3,4);
+        IntList re=IntList.reverse(or);
+        assertEquals(IntList.of(4,3,2,1),re); //reverse test
+        assertNotEquals(or,re);//destrutive test
+
+        IntList or1=null;
+        IntList re1=IntList.reverse(or1);
+        assertEquals(null,re1); //reverse test
+    }
+
 
     /* Run the unit tests in this file. */
     public static void main(String... args) {        
