@@ -37,10 +37,18 @@ public class ArrayDeque<T> {
     }
     private void resize(int cap){
         T[] a = (T[]) new Object[cap];
-        System.arraycopy(items, First, a, a.length/2, size);
+        if ( First == 0 ){
+        System.arraycopy(items, First, a,
+                a.length/2, size);
         items = a;
         First = a.length/2;
-        Last = a.length/2 + size - 1;
+        Last = a.length/2 + size - 1;}
+        else{
+            System.arraycopy(items, First, a,
+                    First, size);
+            items = a;
+
+        }
     }
     public boolean isEmpty(){
         return items[First] == null;
@@ -70,7 +78,24 @@ public class ArrayDeque<T> {
         items[Last] = null;
         Last --;
         size --;
-        if(items.length > 16 && size == items.length/4) resize(items.length/2);
+        if(items.length >= 16 && size == items.length/4) resize(items.length/2);
         return a;
     }
+    public static void main(String[] args) {
+        ArrayDeque <Integer> a = new ArrayDeque<>();
+        a.addLast(1);
+        a.addLast(1);
+        a.addLast(1);
+        a.addLast(1);
+        a.addLast(1);
+        a.addLast(1);
+        a.addLast(1);
+
+        a.printDeque();
+        a.removeLast();
+        a.removeLast();a.removeLast();a.removeLast();a.removeLast();
+        a.printDeque();
+        System.out.println(a.get(2));
+    }
+
 }
