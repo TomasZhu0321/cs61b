@@ -1,8 +1,8 @@
 public class ArrayDeque<T> {
     private T[] items ;
     private int size;
-    int First = 3;
-    int Last = First + size - 1;
+    private int First = 3; //应该是private
+    private int Last = First + size - 1;
 
 
     public ArrayDeque(){
@@ -27,7 +27,8 @@ public class ArrayDeque<T> {
         if (Last + 1 < items.length){
             items[Last + 1] = i;
             Last ++;
-            size ++;}
+            size ++;
+        }
         else{
             resize(items.length * 2);
             items[Last + 1] = i;
@@ -37,18 +38,25 @@ public class ArrayDeque<T> {
     }
     private void resize(int cap){
         T[] a = (T[]) new Object[cap];
-        if ( First == 0 ){
+        if ( a.length >= items.length ){
+            if(First == 0){
         System.arraycopy(items, First, a,
                 a.length/2, size);
-        items = a;
         First = a.length/2;
-        Last = a.length/2 + size - 1;}
+        Last = First + size -1;
+        }
+            if(Last == items.length - 1){
+                System.arraycopy(items, First, a,
+                        First, size);
+            }
+        }
         else{
             System.arraycopy(items, First, a,
-                    First, size);
-            items = a;
-
+                    Math.abs(Last - a.length), size);
+            First = Math.abs(Last - a.length);
+            Last = First + size - 1;
         }
+        items = a;
     }
     public boolean isEmpty(){
         return items[First] == null;
@@ -81,6 +89,4 @@ public class ArrayDeque<T> {
         if(items.length >= 16 && size == items.length/4) resize(items.length/2);
         return a;
     }
-
-
 }
