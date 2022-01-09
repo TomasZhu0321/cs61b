@@ -3,6 +3,7 @@ public class ArrayDeque<T> {
     private int size;
     private int First = 3; //应该是private
     private int Last = First + size - 1;
+    private int index;
 
     public ArrayDeque(){
         items = (T[]) new Object[8];
@@ -16,6 +17,7 @@ public class ArrayDeque<T> {
         size ++;
         }
         else{
+            index = 1;
             resize(items.length * 2);
             items[ First - 1 ] = i;
             First --;
@@ -29,6 +31,7 @@ public class ArrayDeque<T> {
             size ++;
         }
         else{
+            index = 2;
             resize(items.length * 2);
             items[Last + 1] = i;
             Last ++;
@@ -38,13 +41,13 @@ public class ArrayDeque<T> {
     private void resize(int cap){
         T[] a = (T[]) new Object[cap];
         if ( a.length >= items.length ){
-            if(First == 0){
+            if(First == 0 && index == 1 ){
         System.arraycopy(items, First, a,
                 a.length/2, size);
         First = a.length/2;
         Last = First + size -1;
         }
-            if(Last == items.length - 1){
+            if(Last == items.length - 1 && index == 2 ){
                 System.arraycopy(items, First, a,
                         First, size);
             }
