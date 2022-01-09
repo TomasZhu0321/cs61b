@@ -4,7 +4,6 @@ public class ArrayDeque<T> {
     private int First = 3; //应该是private
     private int Last = First + size - 1;
 
-
     public ArrayDeque(){
         items = (T[]) new Object[8];
         size = 0;
@@ -74,19 +73,33 @@ public class ArrayDeque<T> {
         return items[First + index];
     }
     public T removeFirst(){
-        T a = items[First];
-        items[First] = null;
-        First ++;
-        size --;
-        if(items.length > 16 && size == items.length/4) resize(items.length/2);
-        return a;
+        if(size>=0)
+        {   T a = items[First];
+            items[First] = null;
+            First ++;
+            size --;
+            if(items.length > 16 && size == items.length/4)
+            {
+                resize(items.length/2);
+                return a;
+            }
+            return a;
+        }
+        return null;
     }
     public T removeLast(){
-        T a = items[Last];
-        items[Last] = null;
-        Last --;
-        size --;
-        if(items.length >= 16 && size == items.length/4) resize(items.length/2);
-        return a;
+        if(size>=0)
+        {   T a = items[Last];
+            items[Last] = null;
+            Last --;
+            size --;
+            if(items.length >= 16 && size == items.length/4)
+            {
+                resize(items.length/2);
+                return a;
+            }
+            return a;
+        }
+        return null;
     }
 }
