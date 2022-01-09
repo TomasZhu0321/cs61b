@@ -81,21 +81,6 @@ public class ArrayDeque<T> {
         if(items.length >= 16 && size == items.length/4) resize(items.length/2);
         return a;
     }
-    public static void main(String[] args) {
-        ArrayDeque <Integer> a = new ArrayDeque<>();
-        a.addLast(1);
-        a.addLast(1);
-        a.addLast(1);
-        a.addLast(1);
-        a.addLast(1);
-        a.addLast(1);
-        a.addLast(1);
 
-        a.printDeque();
-        a.removeLast();
-        a.removeLast();a.removeLast();a.removeLast();a.removeLast();
-        a.printDeque();
-        System.out.println(a.get(2));
-    }
 
 }
