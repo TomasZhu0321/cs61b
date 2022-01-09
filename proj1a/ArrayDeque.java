@@ -58,7 +58,7 @@ public class ArrayDeque<T> {
         items = a;
     }
     public boolean isEmpty(){
-        return items[First] == null;
+        return size==0;
     }
     public int size(){
         return size;
@@ -73,7 +73,7 @@ public class ArrayDeque<T> {
         return items[First + index];
     }
     public T removeFirst(){
-        if(size>=0)
+        if(size>0)
         {   T a = items[First];
             items[First] = null;
             First ++;
@@ -88,7 +88,7 @@ public class ArrayDeque<T> {
         return null;
     }
     public T removeLast(){
-        if(size>=0)
+        if(size>0)
         {   T a = items[Last];
             items[Last] = null;
             Last --;
