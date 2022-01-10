@@ -26,6 +26,5 @@ public class TestPalindrome {
     @Test
     public void testIsPalindromecc(){
         assertTrue(palindrome.isPalindrome("acdb",offByOne));
-
     }
 }
