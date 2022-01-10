@@ -5,6 +5,7 @@ public class ArrayDeque<T> {
     private int Last = First + size - 1;
     private int index;
 
+
     public ArrayDeque(){
         items = (T[]) new Object[8];
         size = 0;
@@ -73,6 +74,9 @@ public class ArrayDeque<T> {
         System.out.println("");
     }
     public T get(int index){
+        if(index < 0 || index > size -1 ){
+            return null;
+        }
         return items[First + index];
     }
     public T removeFirst(){
@@ -91,12 +95,12 @@ public class ArrayDeque<T> {
         return null;
     }
     public T removeLast(){
-        if(size>0)
+        if(size > 0)
         {   T a = items[Last];
             items[Last] = null;
             Last --;
             size --;
-            if(items.length >= 16 && size == items.length/4)
+            if( items.length >= 16 && size == items.length/4)
             {
                 resize(items.length/2);
                 return a;
