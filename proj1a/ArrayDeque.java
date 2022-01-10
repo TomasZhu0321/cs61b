@@ -55,8 +55,8 @@ public class ArrayDeque<T> {
         }
         else{
             System.arraycopy(items, First, a,
-                    Math.abs(Last - a.length), size);
-            First = Math.abs(Last - a.length);
+                    Math.abs(First - a.length), size);
+            First = Math.abs(First - a.length);
             Last = First + size - 1;
         }
         items = a;
