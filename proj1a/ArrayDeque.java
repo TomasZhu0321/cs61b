@@ -54,10 +54,18 @@ public class ArrayDeque<T> {
             }
         }
         else{
+            if (First - a.length >= 0){
             System.arraycopy(items, First, a,
                     Math.abs(First - a.length), size);
             First = Math.abs(First - a.length);
             Last = First + size - 1;
+            }
+            else{
+                System.arraycopy(items, First, a,
+                    Math.abs(Last - a.length - 1 ), size);
+                First = Math.abs(Last - a.length - 1 );
+                Last = First + size - 1;
+            }
         }
         items = a;
     }
@@ -74,7 +82,7 @@ public class ArrayDeque<T> {
         System.out.println("");
     }
     public T get(int index){
-        if(index < 0 || index > size -1 ){
+        if(index < 0 || index > size - 1){
             return null;
         }
         return items[First + index];
@@ -109,4 +117,5 @@ public class ArrayDeque<T> {
         }
         return null;
     }
+
 }
